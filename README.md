@@ -13,6 +13,14 @@
 - **Modern Architecture:** React (Vite) frontend and Python (Flask) backend.
 - **NLP Model:** Utilizes Natural Language Processing (Bag of Words + Naive Bayes).
 
+## 📸 Screenshots
+
+![Main Interface](screenshots/nombre_imagen_1.png)
+*Main interface ready for input.*
+
+![Prediction Example](screenshots/nombre_imagen_2.png)
+*Spam detection in action.*
+
 ## Tech Stack
 
 ### Backend (AI & API)
