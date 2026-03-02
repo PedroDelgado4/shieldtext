@@ -13,18 +13,16 @@ CORS(app)  # Habilitar CORS para permitir peticiones desde React
 
 def cargar_modelo():
     """Carga el modelo desde el archivo .joblib."""
+    # Definimos la ruta absoluta primero para que esté disponible en todo el bloque
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    ruta_modelo = os.path.join(base_dir, 'spam_detector.joblib')
     try:
-        modelo = joblib.load('spam_detector.joblib')
-        # Usamos rutas absolutas para encontrar el modelo sin importar desde dónde se ejecute
-        base_dir = os.path.dirname(os.path.abspath(__file__))
-        ruta_modelo = os.path.join(base_dir, 'spam_detector.joblib')
-        
         print(f"--- Intentando cargar modelo desde: {ruta_modelo} ---")
         modelo = joblib.load(ruta_modelo)
         print("✅ ¡Modelo cargado exitosamente!")
         return modelo
     except FileNotFoundError:
-        print(f"❌ ERROR: No se encontró el archivo en {ruta_modelo}")
+        print(f"❌ ERROR CRÍTICO: No se encontró el archivo del modelo en {ruta_modelo}")
         return None
 
 def limpiar_texto(texto):

@@ -1,20 +1,8 @@
-# Python
-__pycache__/
-*.py[cod]
 venv/
+__pycache__/
 .env
-
-# Node / React
+*.pyc
+.DS_Store
 node_modules/
 dist/
-.DS_Store
-
-# Logs
-*.log
-
-# IDEs
-.vscode/
-.idea/
-
-# Nota: NO ignoramos spam_detector.joblib porque queremos desplegarlo.
-# Si fuera muy grande (>100MB), necesitaríamos Git LFS, pero para este caso está bien subirlo.
+ai_research/data/*.csv
