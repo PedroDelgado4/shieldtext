@@ -15,10 +15,10 @@
 
 ## 📸 Screenshots
 
-![Main Interface](screenshots/nombre_imagen_1.png)
+![Main Interface](screenshots/image1.PNG)
 *Main interface ready for input.*
 
-![Prediction Example](screenshots/nombre_imagen_2.png)
+![Prediction Example](screenshots/image2.PNG)
 *Spam detection in action.*
 
 ## Tech Stack
