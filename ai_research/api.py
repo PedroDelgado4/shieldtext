@@ -6,7 +6,9 @@ import os
 
 # Inicializar la aplicación Flask
 app = Flask(__name__)
-CORS(app)  # Habilitar CORS para permitir peticiones desde React
+allowed_origins = os.environ.get("ALLOWED_ORIGINS", "*")
+
+CORS(app, resources={r"/*": {"origins": allowed_origins}})  # Habilitar CORS para permitir peticiones desde React
 
 # --- Cargar el modelo y la función de limpieza ---
 # Esto se hace solo una vez cuando el servidor arranca
