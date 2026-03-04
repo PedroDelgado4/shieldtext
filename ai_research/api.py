@@ -6,9 +6,16 @@ import os
 
 # Inicializar la aplicación Flask
 app = Flask(__name__)
-allowed_origins = os.environ.get("ALLOWED_ORIGINS", "*")
+origins_list = [
+        "http://localhost:5173", # Vite por defecto
+        "https://shieldtext.vercel.app"
+]
 
-CORS(app, resources={r"/*": {"origins": allowed_origins}})  # Habilitar CORS para permitir peticiones desde React
+CORS(app, resources={r"/*": {
+        "origins": origins_list,
+        "methods": ["GET", "POST", "OPTIONS"],
+        "allow_headers": ["Content-Type", "Authorization"]
+}})
 
 # --- Cargar el modelo y la función de limpieza ---
 # Esto se hace solo una vez cuando el servidor arranca
