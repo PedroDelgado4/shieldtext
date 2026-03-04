@@ -11,11 +11,23 @@ origins_list = [
         "https://shieldtext.vercel.app"
 ]
 
+# Configuración extendida de CORS para manejar preflights
 CORS(app, resources={r"/*": {
         "origins": origins_list,
         "methods": ["GET", "POST", "OPTIONS"],
         "allow_headers": ["Content-Type", "Authorization"]
 }})
+
+# --- Middleware para forzar cabeceras CORS (Ciberseguridad/Robustez) ---
+@app.after_request
+def add_cors_headers(response):
+    """Inyecta las cabeceras necesarias en cada respuesta del servidor."""
+    origin = request.headers.get('Origin')
+    if origin in origins_list:
+        response.headers['Access-Control-Allow-Origin'] = origin
+    response.headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
+    return response
 
 # --- Cargar el modelo y la función de limpieza ---
 # Esto se hace solo una vez cuando el servidor arranca
@@ -50,6 +62,11 @@ def predict():
     """
     Ruta que recibe un texto y devuelve la predicción del modelo.
     """
+    
+    # Manejo manual de peticiones OPTIONS para evitar error 415
+    if request.method == 'OPTIONS':
+        return '', 200
+
     if modelo is None:
         return jsonify({'error': 'Modelo no encontrado, verifica que spam_detector.joblib exista.'}), 500
 
