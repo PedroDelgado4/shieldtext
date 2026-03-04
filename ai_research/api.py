@@ -44,8 +44,8 @@ def limpiar_texto(texto):
 modelo = cargar_modelo()
 
 # --- Definir la ruta de la API ---
-
-@app.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['POST', 'OPTIONS'])
+@app.route('/predict/', methods=['POST', 'OPTIONS'])
 def predict():
     """
     Ruta que recibe un texto y devuelve la predicción del modelo.

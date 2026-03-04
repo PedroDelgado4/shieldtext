@@ -1,4 +1,3 @@
-// Archivo: src/App.jsx
 import { useState } from 'react';
 import axios from 'axios';
 import './App.css';
@@ -20,7 +19,7 @@ function App() {
         const apiUrl = import.meta.env.VITE_API_URL || 'http://127.0.0.1:5000';
         
         // Hacemos la petición a nuestra API en Flask
-        const response = await axios.post(`${apiUrl}/predict`, {
+        const response = await axios.post(`${apiUrl}/predict/`, {
           message: message
         });
         setResult(response.data);
