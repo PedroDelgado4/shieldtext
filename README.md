@@ -35,8 +35,10 @@
 - **Axios**: For backend communication.
 
 ## Local Installation and Usage
-
-1. **Clone the repository**
    ```bash
-   git clone [https://github.com/PedroDelgado4/shieldtext.git](https://github.com/PedroDelgado4/shieldtext.git)
+   git clone [https://github.com/PedroDelgado4/shieldtext.git]
    cd shieldtext
+   npm install
+   npm run dev
+   npm run build
+   ```
